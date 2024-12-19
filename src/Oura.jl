@@ -2,7 +2,6 @@ module Oura
 
 using HTTP
 using JSON3
-using Dates
 
 export OuraClient
 export getHeartrate
