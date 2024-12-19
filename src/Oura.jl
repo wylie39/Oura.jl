@@ -1,9 +1,12 @@
 module Oura
 
 using HTTP
+using JSON3
 using Dates
 
 export OuraClient
+export getHeartrate
+export getSleep
 
 
 """
@@ -16,7 +19,15 @@ mutable struct OuraClient
     __headers::AbstractDict
     key::AbstractString
 
-    function OuraClient(key, url="https://api.ouraring.com")
+    function OuraClient(key::String="", url="https://api.ouraring.com")
+        if isempty(key)
+            @show 
+            error(
+                """
+                    You did not give a token``
+                """,
+            )
+        end
         headers = Dict(
             "Authorization" => "Bearer " * key
         )
@@ -24,26 +35,36 @@ mutable struct OuraClient
     end
 end
 
-function getHeartrate(client::OuraClient, startDate, endDate)
-    return HTTP.get(
+"""
+    getHeartrate(client::OuraClient, startDate::String, endDate::String)
+
+    Get all heartrate for a given time period
+"""
+function getHeartrate(client::OuraClient, startDate::String, endDate::String)
+    return JSON3.read(HTTP.get(
         client.__URL * "/v2/usercollection/heartrate?",
         client.__headers,
         query=[
             "start_date" => startDate,
             "end_date" => endDate
         ]
-    )
+    ).body).data
 end
 
-function getSleep(client::OuraClient, startDate, endDate)
-    return HTTP.get(
+"""
+    getSleep(client::OuraClient, startDate::String, endDate::String)
+
+    Get all sleep data for a given time period
+"""
+function getSleep(client::OuraClient, startDate::String, endDate::String)
+    return JSON3.read(HTTP.get(
         client.__URL * "/v2/usercollection/sleep?",
         client.__headers,
         query=[
             "start_date" => startDate,
             "end_date" => endDate
         ]
-    )
+    ).body).data
 end
 
 
