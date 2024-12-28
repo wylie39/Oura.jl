@@ -11,13 +11,16 @@ mutable struct OuraClient
 
     function OuraClient(key::String="", sandbox::Bool=false, url=defaultUrl)
         # TODO: Get key from env
-        if isempty(key)
+        if isempty(key) & !haskey(ENV, "OURAKEY")
             @show 
             error(
                 """
                     You did not give a token``
                 """,
             )
+        end
+        if isempty(key)
+            key = ENV["OURAKEY"]
         end
         if (sandbox) url = sandboxUrl
             

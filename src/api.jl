@@ -1,6 +1,6 @@
 
 """
-    getHeartrate(client::OuraClient, startDate::String, endDate::String)
+    getheartrate(client::OuraClient, startDate::String, endDate::String)
 
     Get all heartrate date for a given time period. default is to give the last day.
 """
