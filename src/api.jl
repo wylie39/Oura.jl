@@ -2,7 +2,7 @@
 """
     getheartrate(client::OuraClient, startDate::String, endDate::String)
 
-    Get all heartrate date for a given time period. default is to give the last day.
+    Get all heartrate data for a given time period. default is to give the last day.
 """
 function getheartrate(client::OuraClient, startDate::String=string(today() - Day(1)), endDate::String=string(today()))
     return apiGet(

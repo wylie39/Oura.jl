@@ -9,8 +9,8 @@ mutable struct OuraClient
     __sandbox::Bool
     key::AbstractString
 
+    
     function OuraClient(key::String="", sandbox::Bool=false, url=defaultUrl)
-        # TODO: Get key from env
         if isempty(key) & !haskey(ENV, "OURAKEY")
             @show 
             error(
