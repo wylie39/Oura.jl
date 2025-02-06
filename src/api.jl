@@ -20,7 +20,7 @@ end
 
     Get all sleep data for a given time period. default is to give the last day.
 """
-function getsleep(client::OuraClient,  startDate::String=string(today() - Day(1)), endDate::String=string(today()))
+function getsleep(client::OuraClient, startDate::String=string(today() - Day(1)), endDate::String=string(today()))
     return apiGet(
         client,
         "sleep",
@@ -72,10 +72,26 @@ end
 
     Get daily readiness data for a given time period. default is to give the last day.
 """
-function getdailyreadiness(client::OuraClient,  startDate::String=string(today() - Day(1)), endDate::String=string(today()))
+function getdailyreadiness(client::OuraClient, startDate::String=string(today() - Day(1)), endDate::String=string(today()))
     return apiGet(
         client,
         "daily_readiness",
+        [
+            "start_date" => startDate,
+            "end_date" => endDate
+        ]
+    )
+end
+
+"""
+    getdailyactivity(client::OuraClient, startDate::String, endDate::String)
+
+    Get daily activity data for a given time period. default is to give the last day.
+"""
+function getdailyactivity(client::OuraClient, startDate::String=string(today() - Day(1)), endDate::String=string(today()))
+    return apiGet(
+        client,
+        "daily_activity",
         [
             "start_date" => startDate,
             "end_date" => endDate
@@ -88,7 +104,7 @@ end
 
     Get daily cardiovascular age data for a given time period. default is to give the last day.
 """
-function getdailycardiovascularage(client::OuraClient,  startDate::String=string(today() - Day(1)), endDate::String=string(today()))
+function getdailycardiovascularage(client::OuraClient, startDate::String=string(today() - Day(1)), endDate::String=string(today()))
     return apiGet(
         client,
         "daily_cardiovascular_age",

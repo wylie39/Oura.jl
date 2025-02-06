@@ -4,7 +4,7 @@ using HTTP
 using JSON3
 using Dates
 
-export OuraClient, getheartrate, getsleep, getpersonalinfo, getdailyreadiness, getdailycardiovascularage
+export OuraClient, getheartrate, getdailyactivity, getsleep, getpersonalinfo, getdailyreadiness, getdailycardiovascularage
 
 
 include("const.jl")
