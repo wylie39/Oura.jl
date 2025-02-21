@@ -3,7 +3,7 @@ using Documenter, Oura
 
 
 makedocs(sitename="Oura.jl", pages=[
-    "Home" => "index.md",
+    "Home" => "../README.md",
     "Get Started" => "getStarted.md",
     "Functions" => "functions.md",
 ])
