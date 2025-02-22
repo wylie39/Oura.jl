@@ -11,8 +11,8 @@ Interact with the [Oura API](https://cloud.ouraring.com/v2/docs) using Personal 
 **Installation**
 
 ```julia-repl
-using Pkg
-Pkg.add(url="https://github.com/wylie39/Oura.jl")
+julia> using Pkg
+julia> Pkg.add(url="https://github.com/wylie39/Oura.jl")
 ```
 
 **Basic Usage**

@@ -1,7 +1,7 @@
 name = "Oura"
 uuid = "8e12dfa0-5d10-4b69-81ee-8efd2627538b"
 authors = ["Wylie"]
-version = "1.0.0-DEV"
+version = "0.1.0"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
