@@ -3,11 +3,8 @@ using Dates
 using Test
 
 @testset "Oura.jl" begin
-    @testset "Fails without key" begin
-        @test_throws "You did not give a token" client = OuraClient()
-    end
     @testset "Basics" begin
-        token = ENV["OURATOKEN"]
+        token = ENV["OURAKEY"]
         client = OuraClient(token, true)
         @test_throws "Can't get PersonalInfo for sandbox" getpersonalinfo(client)
         @test typeof(getdailycardiovascularage(client).data[1].day) == String

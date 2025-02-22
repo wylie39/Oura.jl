@@ -13,11 +13,7 @@ mutable struct OuraClient
     function OuraClient(key::String="", sandbox::Bool=false, url=defaultUrl)
         if isempty(key) & !haskey(ENV, "OURAKEY")
             @show
-            error(
-                """
-                    You did not give a token
-                """,
-            )
+            throw("You did not give a token")
         end
         if isempty(key)
             key = ENV["OURAKEY"]

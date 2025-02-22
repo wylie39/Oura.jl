@@ -38,7 +38,7 @@ end
 """
 function getpersonalinfo(client::OuraClient)
     if (client.__sandbox)
-        error("Can't get PersonalInfo for sandbox")
+        throw("Can't get PersonalInfo for sandbox")
         return
     end
     return apiGet(
