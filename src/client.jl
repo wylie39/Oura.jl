@@ -9,21 +9,22 @@ mutable struct OuraClient
     __sandbox::Bool
     key::AbstractString
 
-    
+
     function OuraClient(key::String="", sandbox::Bool=false, url=defaultUrl)
         if isempty(key) & !haskey(ENV, "OURAKEY")
-            @show 
+            @show
             error(
                 """
-                    You did not give a token``
+                    You did not give a token
                 """,
             )
         end
         if isempty(key)
             key = ENV["OURAKEY"]
         end
-        if (sandbox) url = sandboxUrl
-            
+        if (sandbox)
+            url = sandboxUrl
+
         end
         new(url, sandbox, key)
     end
@@ -41,13 +42,13 @@ function apiGet(
     query::Array,
     headers::Dict=Dict(),
 )
-    merge!(headers, Dict("Authorization" => "Bearer " * client.key ))
+    merge!(headers, Dict("Authorization" => "Bearer " * client.key))
     response = HTTP.get(
         client.__URL * path,
         headers,
         query=query
     )
     body = response.body
-   
+
     return JSON3.read(body)
 end
