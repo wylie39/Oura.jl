@@ -42,4 +42,12 @@ jobs:
       - name: Run tests
         env:
           OURAKEY: ${{secrets.OURATOKEN}}
-        run: julia --color=yes --project=@. -e 'using Pkg; Pkg.test()'
+        run: julia --color=yes --project=@. -e 'using Pkg; Pkg.test(coverage=true)'
+      - uses: julia-actions/julia-processcoverage@v1
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: lcov.info
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_ORG_TOKEN }}
+          slug: wylie39/Oura.jl

@@ -1,6 +1,7 @@
 # Oura.jl
 
 [![Build Status](https://github.com/wylie39/Oura.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/wylie39/Oura.jl/actions/workflows/CI.yml?query=branch%3Amain)
+[![codecov](https://codecov.io/gh/wylie39/Oura.jl/graph/badge.svg?token=C2MWIAFP3Q)](https://codecov.io/gh/wylie39/Oura.jl)
 
 Interact with the [Oura API](https://cloud.ouraring.com/v2/docs) using Personal Access Tokens
 
